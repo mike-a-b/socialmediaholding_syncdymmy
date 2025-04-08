@@ -18,10 +18,11 @@ class ProductSyncController extends Controller
         $products = $response->json()['products'];
 
         foreach ($products as $item) {
-            dd($item);
+//            dd($item);
             Product::updateOrCreate(
                 ['external_id' => $item['id'], 'type' => 'product'],
                 [
+                    'type' => 'product',
                     'title' => $item['title'],
                     'description' => $item['description'],
                     'price' => $item['price'],
